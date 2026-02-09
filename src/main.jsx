@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import LensRef from './LensRef.jsx'
+import CLspec from './CLspec.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <LensRef />
+    <CLspec />
   </React.StrictMode>,
 )

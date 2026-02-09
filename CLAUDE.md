@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-LensRef is a React single-page application for eye care professionals to reference contact lens parameters, ocular medications, and private label (store-brand) equivalence cross-references.
+CLspec is a React single-page application for eye care professionals to reference contact lens parameters, ocular medications, and private label (store-brand) equivalence cross-references.
 
 ## Build & Development
 
@@ -23,12 +23,12 @@ npm run preview    # preview production build (vite preview)
 
 ```
 index.html          # App shell, loads JetBrains Mono font, mounts #root
-src/main.jsx        # Entry point — renders <LensRef /> into #root with StrictMode
-src/LensRef.jsx     # Entire application in one component file
+src/main.jsx        # Entry point — renders <CLspec /> into #root with StrictMode
+src/CLspec.jsx      # Entire application in one component file
 public/favicon.svg  # SVG favicon (forest green "CL" logo)
 ```
 
-### Single-file layout (`src/LensRef.jsx`)
+### Single-file layout (`src/CLspec.jsx`)
 
 **Data layer** — Static arrays defined at module scope:
 - `LENSES` — ~40 contact lens products with properties: material, dk (oxygen permeability), bc (base curve), dia (diameter), water content, power range, modality, type (Sphere/Toric/Multifocal), replacement schedule, private label mapping, discontinued flag
@@ -39,7 +39,7 @@ public/favicon.svg  # SVG favicon (forest green "CL" logo)
 
 **Inline sub-components** — `SortIcon`, `FilterPill`, `Badge`, `PrintButton` defined inside the file.
 
-**Main `LensRef` component** — Manages three tabs ("lenses", "crossref", "meds"), each with its own search/filter/sort state via `useState`. Filtered datasets are computed with `useMemo`; sort and print handlers use `useCallback`.
+**Main `CLspec` component** — Manages three tabs ("lenses", "crossref", "meds"), each with its own search/filter/sort state via `useState`. Filtered datasets are computed with `useMemo`; sort and print handlers use `useCallback`.
 
 ### Styling
 

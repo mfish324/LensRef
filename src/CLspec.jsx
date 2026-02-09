@@ -6,7 +6,7 @@ const esc = (s) => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(
 const printTable = (title, tableHtml, subtitle = "") => {
   const win = window.open("", "_blank");
   if (!win) return;
-  win.document.write(`<!DOCTYPE html><html><head><title>${title} - LensRef</title>
+  win.document.write(`<!DOCTYPE html><html><head><title>${title} - CLspec</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,9 +24,9 @@ const printTable = (title, tableHtml, subtitle = "") => {
   @media print { body { padding: 12px; } @page { margin: 0.5in; size: landscape; } }
 </style></head><body>
 <h1>${title}</h1>
-<div class="subtitle">${subtitle || "LensRef · Printed " + new Date().toLocaleDateString()}</div>
+<div class="subtitle">${subtitle || "CLspec · Printed " + new Date().toLocaleDateString()}</div>
 ${tableHtml}
-<div class="footer">LensRef · Verify all parameters with manufacturer specifications</div>
+<div class="footer">CLspec · Verify all parameters with manufacturer specifications</div>
 <script>window.onafterprint=()=>window.close();window.print();<\/script>
 </body></html>`);
   win.document.close();
@@ -179,7 +179,7 @@ const PrintButton = ({ onClick, label = "Print Table" }) => (
 
 // ─── Main App ──────────────────────────────────────────────────────────────────
 
-export default function LensRef() {
+export default function CLspec() {
   const [activeTab, setActiveTab] = useState("lenses");
   const [searchQuery, setSearchQuery] = useState("");
   const [brandFilter, setBrandFilter] = useState("All");
@@ -275,8 +275,8 @@ export default function LensRef() {
       searchQuery ? `"${esc(searchQuery)}"` : null,
     ].filter(Boolean);
     const subtitle = filters.length
-      ? `Filtered: ${filters.join(" · ")} · ${filteredLenses.length} lenses · LensRef · ${new Date().toLocaleDateString()}`
-      : `${filteredLenses.length} lenses · LensRef · ${new Date().toLocaleDateString()}`;
+      ? `Filtered: ${filters.join(" · ")} · ${filteredLenses.length} lenses · CLspec · ${new Date().toLocaleDateString()}`
+      : `${filteredLenses.length} lenses · CLspec · ${new Date().toLocaleDateString()}`;
     printTable("Contact Lens Parameters",
       `<table><thead><tr><th>Lens Name</th><th>Brand</th><th>Modality</th><th>Type</th><th>Material</th>` +
       `<th>Dk</th><th>BC</th><th>Dia</th><th>H₂O%</th><th>Power Range</th><th>Qty</th><th>Replace</th><th>Price</th></tr></thead>` +
@@ -293,7 +293,7 @@ export default function LensRef() {
     printTable("Private Label Cross-Reference",
       `<table><thead><tr><th>Name Brand</th><th>Mfg</th><th>↔</th><th>Private Label</th><th>Retailer</th><th>Material</th><th>Status</th></tr></thead>` +
       `<tbody>${rows}</tbody></table>`,
-      `${filteredPL.length} cross-references · LensRef · ${new Date().toLocaleDateString()}`);
+      `${filteredPL.length} cross-references · CLspec · ${new Date().toLocaleDateString()}`);
   }, [filteredPL]);
 
   const printMeds = useCallback(() => {
@@ -304,7 +304,7 @@ export default function LensRef() {
     printTable("Ocular Medications Reference",
       `<table><thead><tr><th>Medication</th><th>Class</th><th>Brand</th><th>Dosage</th><th>Indication</th><th>Contraindications</th><th>Price</th></tr></thead>` +
       `<tbody>${rows}</tbody></table>`,
-      `${filteredMeds.length} medications · LensRef · ${new Date().toLocaleDateString()}`);
+      `${filteredMeds.length} medications · CLspec · ${new Date().toLocaleDateString()}`);
   }, [filteredMeds]);
 
   const tabStyle = (tab) => ({
@@ -388,7 +388,7 @@ export default function LensRef() {
             color: "#fff",
             letterSpacing: "-0.02em",
           }}>
-            LensRef
+            CLspec
           </span>
           <span style={{
             fontSize: 11,
@@ -729,7 +729,7 @@ export default function LensRef() {
         borderTop: "1px solid #e8ece8",
         marginTop: 40,
       }}>
-        LensRef Prototype · Data shown is for demonstration purposes · Verify all parameters with manufacturer specifications
+        CLspec Prototype · Data shown is for demonstration purposes · Verify all parameters with manufacturer specifications
       </div>
     </div>
   );
