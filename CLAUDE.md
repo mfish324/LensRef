@@ -25,6 +25,7 @@ npm run preview    # preview production build (vite preview)
 index.html          # App shell, loads JetBrains Mono font, mounts #root
 src/main.jsx        # Entry point — renders <LensRef /> into #root with StrictMode
 src/LensRef.jsx     # Entire application in one component file
+public/favicon.svg  # SVG favicon (forest green "CL" logo)
 ```
 
 ### Single-file layout (`src/LensRef.jsx`)
@@ -52,3 +53,4 @@ All CSS is inline (style objects in JSX). Theme palette: forest green `#1a5c3a`,
 - Search is case-insensitive across multiple fields per tab
 - Sorting toggles direction on repeated clicks of the same column
 - `useMemo` hooks for filtered data must be declared before `useCallback` hooks that reference them (JS temporal dead zone)
+- User input interpolated into print HTML must be escaped via `esc()` helper to prevent XSS
