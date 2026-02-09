@@ -8,7 +8,7 @@ LensRef is a React single-page application for eye care professionals to referen
 
 ## Build & Development
 
-Vite + React 18. No test infrastructure.
+Vite + React 18. Deployed on Vercel. No test infrastructure.
 
 ```bash
 npm install        # install dependencies
@@ -25,7 +25,6 @@ npm run preview    # preview production build (vite preview)
 index.html          # App shell, loads JetBrains Mono font, mounts #root
 src/main.jsx        # Entry point — renders <LensRef /> into #root with StrictMode
 src/LensRef.jsx     # Entire application in one component file
-lensref.jsx         # Original standalone copy (pre-Vite, kept at root)
 ```
 
 ### Single-file layout (`src/LensRef.jsx`)
@@ -48,7 +47,8 @@ All CSS is inline (style objects in JSX). Theme palette: forest green `#1a5c3a`,
 ### Key conventions
 
 - Lens data properties use short keys: `dk` (oxygen permeability), `bc` (base curve), `dia` (diameter)
-- Filters are string-based with `""` meaning "show all"
+- Filters are string-based with `"All"` meaning "show all"
 - Discontinued items are toggled via `showDiscontinued` boolean, rendered with muted styling
 - Search is case-insensitive across multiple fields per tab
 - Sorting toggles direction on repeated clicks of the same column
+- `useMemo` hooks for filtered data must be declared before `useCallback` hooks that reference them (JS temporal dead zone)

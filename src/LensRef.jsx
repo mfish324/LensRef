@@ -1,6 +1,8 @@
 import { useState, useMemo, useCallback } from "react";
 
-// ─── Print Utility ─────────────────────────────────────────────────────────────
+// ─── Utilities ──────────────────────────────────────────────────────────────
+const esc = (s) => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+
 const printTable = (title, tableHtml, subtitle = "") => {
   const win = window.open("", "_blank");
   if (!win) return;
@@ -270,7 +272,7 @@ export default function LensRef() {
       brandFilter !== "All" ? brandFilter : null,
       modalityFilter !== "All" ? modalityFilter : null,
       typeFilter !== "All" ? typeFilter : null,
-      searchQuery ? `"${searchQuery}"` : null,
+      searchQuery ? `"${esc(searchQuery)}"` : null,
     ].filter(Boolean);
     const subtitle = filters.length
       ? `Filtered: ${filters.join(" · ")} · ${filteredLenses.length} lenses · LensRef · ${new Date().toLocaleDateString()}`
